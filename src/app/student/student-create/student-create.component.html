@@ -1,0 +1,68 @@
+<h1>Create student</h1>
+<button (click)="switchStatus()">Show create form</button>
+<ng-container *ngIf="isShowed">
+  <table>
+    <tr>
+      <td>Name</td>
+      <td><input [(ngModel)]="student.name" name="name" type="text"></td>
+    </tr>
+    <tr>
+      <td>Age:</td>
+      <td><input [(ngModel)]="student.age" name="age" type="number"></td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td><input [(ngModel)]="student.address" name="address" type="text"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input (click)="createStudent()" type="submit" value="Create"></td>
+    </tr>
+  </table>
+</ng-container>
+
+<h1>Update form</h1>
+<table>
+  <tr>
+    <td>Name</td>
+    <td><input name="name" type="text" [(ngModel)]="studentUpdate.name"></td>
+  </tr>
+  <tr>
+    <td>Price:</td>
+    <td><input name="age" type="number" [(ngModel)]="studentUpdate.age"></td>
+  </tr>
+  <tr>
+    <td>Address:</td>
+    <td><input name="age" type="text" [(ngModel)]="studentUpdate.address"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input (click)="updateStudent(this.currentIndex)" type="submit" value="Update"></td>
+  </tr>
+</table>
+
+<h1>Product List</h1>
+<table>
+  <tr>
+    <td>#</td>
+    <td>Name</td>
+    <td>Age</td>
+    <td>Address</td>
+    <td>Delete</td>
+    <td>Update</td>
+  </tr>
+  <ng-container *ngFor="let s of students; index as i">
+    <tr>
+      <td>{{i + 1}}</td>
+      <td>{{s.name}}</td>
+      <td>{{s.age}}</td>
+      <td>{{s.address}}</td>
+      <td>
+        <button (click)="removeStudent(i)">Delete</button>
+      </td>
+      <td>
+        <button (click)="showUpdateForm(i)">Update</button>
+      </td>
+    </tr>
+  </ng-container>
+</table>
