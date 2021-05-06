@@ -8,12 +8,14 @@ import {Student} from '../../interface/student';
 })
 export class StudentCreateComponent implements OnInit {
   student: Student = {
+    classes: ''
   };
   students: Student[] = [];
   studentUpdate: Student = {};
   index = 0;
   currentIndex = -1;
   isShowed = false;
+  listClass: string[] = ['Java', 'C++'];
   constructor() { }
 
   ngOnInit() {
@@ -37,7 +39,8 @@ export class StudentCreateComponent implements OnInit {
     this.studentUpdate = {
       name: this.students[i].name,
       age: this.students[i].age,
-      address: this.students[i].address
+      address: this.students[i].address,
+      classes: this.students[i].classes
     };
   }
 

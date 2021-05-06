@@ -15,6 +15,15 @@
       <td><input [(ngModel)]="student.address" name="address" type="text"></td>
     </tr>
     <tr>
+      <td>Class:</td>
+      <td>
+        <select name="classes" [(ngModel)]="student.classes">
+          <option ngValue="">Choose class</option>
+          <option *ngFor="let classes of listClass">{{classes}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
       <td></td>
       <td><input (click)="createStudent()" type="submit" value="Create"></td>
     </tr>
@@ -28,7 +37,7 @@
     <td><input name="name" type="text" [(ngModel)]="studentUpdate.name"></td>
   </tr>
   <tr>
-    <td>Price:</td>
+    <td>Age:</td>
     <td><input name="age" type="number" [(ngModel)]="studentUpdate.age"></td>
   </tr>
   <tr>
@@ -36,18 +45,28 @@
     <td><input name="age" type="text" [(ngModel)]="studentUpdate.address"></td>
   </tr>
   <tr>
+    <td>Class:</td>
+    <td>
+      <select name="classes" [(ngModel)]="studentUpdate.classes">
+        <option ngValue="">Choose class</option>
+        <option *ngFor="let classes of listClass">{{classes}}</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
     <td></td>
     <td><input (click)="updateStudent(this.currentIndex)" type="submit" value="Update"></td>
   </tr>
 </table>
 
-<h1>Product List</h1>
+<h1>Student List</h1>
 <table>
   <tr>
     <td>#</td>
     <td>Name</td>
     <td>Age</td>
     <td>Address</td>
+    <td>Classes</td>
     <td>Delete</td>
     <td>Update</td>
   </tr>
@@ -57,6 +76,7 @@
       <td>{{s.name}}</td>
       <td>{{s.age}}</td>
       <td>{{s.address}}</td>
+      <td>{{s.classes}}</td>
       <td>
         <button (click)="removeStudent(i)">Delete</button>
       </td>
