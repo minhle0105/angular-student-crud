@@ -49,6 +49,17 @@ export class StudentListComponent implements OnInit {
     this.studentUpdate = {};
   }
 
+  findStudentByName(value: string) {
+    let studentsSearch = [];
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.students.length; i++) {
+      if (this.students[i].name.toLowerCase().includes(value.toLowerCase())) {
+        studentsSearch.push(this.students[i]);
+      }
+    }
+    this.students = studentsSearch;
+  }
+
   increaseIndex() {
     this.index++;
   }
