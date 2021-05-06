@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import {FormsModule} from '@angular/forms';
 import { StudentSearchComponent } from './student/student-search/student-search.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { StudentSearchComponent } from './student/student-search/student-search.
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
