@@ -3,10 +3,10 @@ import {Student} from '../../interface/student';
 
 @Component({
   selector: 'app-student-create',
-  templateUrl: './student-create.component.html',
-  styleUrls: ['./student-create.component.css']
+  templateUrl: './student-list.component.html',
+  styleUrls: ['./student-list.component.css']
 })
-export class StudentCreateComponent implements OnInit {
+export class StudentListComponent implements OnInit {
   student: Student = {
     classes: ''
   };

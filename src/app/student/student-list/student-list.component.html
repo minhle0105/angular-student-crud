@@ -1,7 +1,7 @@
-<h1>Create student</h1>
 <button (click)="switchStatus()">Show create form</button>
 <ng-container *ngIf="isShowed">
   <table>
+    <caption><h1>Create student</h1></caption>
     <tr>
       <td>Name</td>
       <td><input [(ngModel)]="student.name" name="name" type="text"></td>
