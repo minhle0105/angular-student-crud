@@ -1,89 +1,29 @@
-<button (click)="switchStatus()">Show create form</button>
-<ng-container *ngIf="isShowed">
-  <table>
-    <caption><h1>Create student</h1></caption>
-    <tr>
-      <td>Name</td>
-      <td><input [(ngModel)]="student.name" name="name" type="text"></td>
-    </tr>
-    <tr>
-      <td>Age:</td>
-      <td><input [(ngModel)]="student.age" name="age" type="number"></td>
-    </tr>
-    <tr>
-      <td>Address:</td>
-      <td><input [(ngModel)]="student.address" name="address" type="text"></td>
-    </tr>
-    <tr>
-      <td>Class:</td>
-      <td>
-        <select name="classes" [(ngModel)]="student.classes">
-          <option ngValue="">Choose class</option>
-          <option *ngFor="let classes of listClass">{{classes}}</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><input (click)="createStudent()" type="submit" value="Create"></td>
-    </tr>
-  </table>
-</ng-container>
-
-<h1>Update form</h1>
-<table>
-  <tr>
-    <td>Name</td>
-    <td><input name="name" type="text" [(ngModel)]="studentUpdate.name"></td>
-  </tr>
-  <tr>
-    <td>Age:</td>
-    <td><input name="age" type="number" [(ngModel)]="studentUpdate.age"></td>
-  </tr>
-  <tr>
-    <td>Address:</td>
-    <td><input name="age" type="text" [(ngModel)]="studentUpdate.address"></td>
-  </tr>
-  <tr>
-    <td>Class:</td>
-    <td>
-      <select name="classes" [(ngModel)]="studentUpdate.classes">
-        <option ngValue="">Choose class</option>
-        <option *ngFor="let classes of listClass">{{classes}}</option>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><input (click)="updateStudent(this.currentIndex)" type="submit" value="Update"></td>
-  </tr>
-</table>
-
 <app-student-search (s)="findStudentByName($event)"></app-student-search>
 <h1>Student List</h1>
 <table>
   <tr>
     <td>#</td>
     <td>Name</td>
-    <td>Age</td>
     <td>Address</td>
+    <td>Mark</td>
     <td>Classes</td>
     <td>Delete</td>
     <td>Update</td>
   </tr>
-  <ng-container *ngFor="let s of students; index as i">
+  <ng-container *ngFor="let s of listStudent; index as i">
     <tr>
       <td>{{i + 1}}</td>
-      <td>{{s.name}}</td>
-      <td>{{s.age}}</td>
+      <td>{{s.fullName}}</td>
       <td>{{s.address}}</td>
+      <td>{{s.mark}}</td>
       <td>{{s.classes}}</td>
       <td>
-        <button (click)="removeStudent(i)">Delete</button>
+        <a [routerLink]="['/students/edit', i]">Update</a>
       </td>
       <td>
-        <button (click)="showUpdateForm(i)">Update</button>
+        <button (click)="removeStudent(i)">Delete</button>
       </td>
     </tr>
   </ng-container>
 </table>
+<a routerLink="/students/create">Create new student</a>

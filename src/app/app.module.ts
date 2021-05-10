@@ -4,21 +4,28 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
-import {FormsModule} from '@angular/forms';
-import { StudentSearchComponent } from './student/student-search/student-search.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { StudentSearchComponent } from './student/search-student/student-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateStudentComponent } from './student/create-student/create-student.component';
+import { UpdateStudentComponent } from './student/update-student/update-student.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentListComponent,
-    StudentSearchComponent
+    StudentSearchComponent,
+    CreateStudentComponent,
+    UpdateStudentComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        RouterModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

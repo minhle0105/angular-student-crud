@@ -1,6 +1,7 @@
 export interface Student {
-  name?: string;
-  age?: number;
+  id?: number;
+  fullName?: string;
   address?: string;
+  mark?: number;
   classes?: string;
 }
