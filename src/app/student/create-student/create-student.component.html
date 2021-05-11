@@ -3,16 +3,6 @@
   <h1>Show Create Form</h1>
   <table>
     <tr>
-      <td>Id:</td>
-      <td><input #id="ngModel" [(ngModel)]="student.id"
-                 name="id" required
-                 type="number"></td>
-      <!--      touched: khi người dùng nhấp vào form control và form control này chưa được điền thông tin
-      thì sẽ thông báo lỗi
-      -->
-      <td *ngIf="id?.errors?.required && id?.touched">Trường này phải được điền</td>
-    </tr>
-    <tr>
       <td>Name:</td>
       <td><input [(ngModel)]="student.fullName" name="fullName" type="text"></td>
     </tr>
@@ -24,14 +14,14 @@
       <td>Mark:</td>
       <td><input [(ngModel)]="student.mark" name="mark" type="number"></td>
     </tr>
-    <tr>
-      <td>Classes:</td>
-      <td>
-        <select [(ngModel)]="student.classes" name="classes">
-          <option *ngFor="let classes of listClass" [value]="classes">{{classes}}</option>
-        </select>
-      </td>
-    </tr>
+<!--    <tr>-->
+<!--      <td>Classes:</td>-->
+<!--      <td>-->
+<!--        <select [(ngModel)]="student.classes" name="classes">-->
+<!--          <option *ngFor="let classes of listClass" [value]="classes">{{classes}}</option>-->
+<!--        </select>-->
+<!--      </td>-->
+<!--    </tr>-->
     <tr>
       <td></td>
       <td><input type="submit" value="Create"></td>

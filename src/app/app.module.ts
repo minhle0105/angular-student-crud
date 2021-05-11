@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateStudentComponent } from './student/create-student/create-student.component';
 import { UpdateStudentComponent } from './student/update-student/update-student.component';
 import {RouterModule} from '@angular/router';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {RouterModule} from '@angular/router';
         FormsModule,
         BrowserAnimationsModule,
         RouterModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]

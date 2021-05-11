@@ -3,9 +3,8 @@
   <h1> Show Update Form</h1>
   <table>
     <tr>
-      <td>Id:</td>
-      <td><input type="number" formControlName="id"></td>
-      <td *ngIf="id?.errors?.required && id?.touched">Trường này phải được điền</td>
+      <td></td>
+      <td><input type="hidden" formControlName="id"></td>
     </tr>
     <tr>
       <td>Name:</td>
@@ -19,14 +18,14 @@
       <td>Mark:</td>
       <td><input type="number" formControlName="mark"></td>
     </tr>
-    <tr>
-      <td>Classes:</td>
-      <td>
-        <select formControlName="classes">
-          <option *ngFor="let classes of listClass" [value]="classes">{{classes}}</option>
-        </select>
-      </td>
-    </tr>
+<!--    <tr>-->
+<!--      <td>Classes:</td>-->
+<!--      <td>-->
+<!--        <select formControlName="classes">-->
+<!--          <option *ngFor="let classes of listClass" [value]="classes">{{classes}}</option>-->
+<!--        </select>-->
+<!--      </td>-->
+<!--    </tr>-->
     <tr>
       <td></td>
       <td><input type="submit" value="Update"></td>

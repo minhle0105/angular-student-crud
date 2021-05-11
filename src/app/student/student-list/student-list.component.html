@@ -18,10 +18,10 @@
       <td>{{s.mark}}</td>
       <td>{{s.classes}}</td>
       <td>
-        <a [routerLink]="['/students/edit', i]">Update</a>
+        <a [routerLink]="['/students/edit', s.id]">Update</a>
       </td>
       <td>
-        <button (click)="removeStudent(i)">Delete</button>
+        <button (click)="removeStudent(s.id)">Delete</button>
       </td>
     </tr>
   </ng-container>

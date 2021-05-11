@@ -28,8 +28,12 @@ export class CreateStudentComponent implements OnInit {
 
   addNewStudent(form: NgForm) {
     let newStudent = form.value;
-    this.studentService.createNewStudent(newStudent);
-    this.student = {};
+    this.studentService.createNewStudent(newStudent).subscribe(() => {
+      alert("Successfully added");
+      this.student = {};
+    }, error => {
+      console.log(error);
+    });
   }
 
 

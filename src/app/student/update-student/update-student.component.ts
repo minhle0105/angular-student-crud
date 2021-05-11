@@ -12,7 +12,13 @@ import {ClassesService} from '../../service/classes.service';
 })
 export class UpdateStudentComponent implements OnInit {
   student: Student = {};
-  studentForm: FormGroup;
+  // @ts-ignore
+  studentForm = new FormGroup({
+    id: new FormControl(),
+    fullName: new FormControl(),
+    address: new FormControl(),
+    mark: new FormControl()
+  });
   listClass: string[] = [];
   index = -1;
 
@@ -21,37 +27,39 @@ export class UpdateStudentComponent implements OnInit {
               private classService: ClassesService) {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.index = +paramMap.get('id');
-      let student = this.getStudentByIndex(this.index);
-      this.studentForm = new FormGroup({
-        id: new FormControl(student.id, Validators.required),
-        fullName: new FormControl(student.fullName),
-        address: new FormControl(student.address),
-        mark: new FormControl(student.mark),
-        classes: new FormControl(student.classes)
+      this.getStudentByIndex(this.index);
       });
-    });
-  }
+    }
 
   ngOnInit() {
-    this.getAllClasses();
+    // this.getAllClasses();
   }
 
-  getAllClasses() {
-    this.listClass = this.classService.getAllClass();
-  }
+  // getAllClasses() {
+  //   this.listClass = this.classService.getAllClass();
+  // }
 
   get id() {
     return this.studentForm.get('id');
   }
 
-  getStudentByIndex(index: number) {
-    let students = this.studentService.getAllStudents();
-    return students[index];
+  getStudentByIndex(id: number) {
+    this.studentService.getStudentById(id).subscribe(student_ => {
+      this.studentForm = new FormGroup({
+        id: new FormControl(student_.id, Validators.required),
+        fullName: new FormControl(student_.fullName),
+        address: new FormControl(student_.address),
+        mark: new FormControl(student_.mark)
+      });
+    })
   }
 
   updateStudentInfo(index: number) {
     let newStudent = this.studentForm.value;
-    this.studentService.updateStudentInfo(index, newStudent);
+    this.studentService.updateStudentInfo(index, newStudent).subscribe(() => {
+      alert("Successfully updated");
+    }, error => {
+      console.log("Error");
+    });
   }
-
 }

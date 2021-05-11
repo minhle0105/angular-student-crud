@@ -9,7 +9,6 @@ import {StudentService} from '../../service/student.service';
 })
 export class StudentListComponent implements OnInit {
   listStudent: Student[] = [];
-  currentIndex = -1;
 
   constructor(private studentService: StudentService) { }
 
@@ -18,11 +17,18 @@ export class StudentListComponent implements OnInit {
   }
 
   getAll() {
-    this.listStudent = this.studentService.getAllStudents();
+    this.studentService.getAllStudents().subscribe(students => {
+      this.listStudent = students;
+    })
   }
 
-  removeStudent(i: number) {
-    this.listStudent.splice(i, 1);
+  removeStudent(id: number) {
+    this.studentService.deleteStudent(id).subscribe(() => {
+      alert("Successfully removed");
+      this.getAll();
+    }, error => {
+      console.log(error);
+    });
   }
 
   findStudentByName(value) {
